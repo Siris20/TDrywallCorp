@@ -1,6 +1,53 @@
+import React, { useState } from 'react';
 import InfiniteMarquee from '../components/InfiniteMarquee';
+import BeforeAfterSlider from '../components/BeforeAfterSlider';
 
 export default function Inicio() {
+  const [activeProjectIndex, setActiveProjectIndex] = useState(0);
+
+  const projects = [
+    {
+      title: "Instalación Residencial Premium",
+      service: "Acabados de Alta Gama",
+      description: "Transformación completa de sala de estar y techos. Se instaló drywall con aislamiento acústico de alta calidad, acabados perfectos listos para pintura y un sistema integrado de iluminación empotrada led.",
+      tags: ["Residencial", "Aislamiento Acústico", "Plafón Premium"],
+      before: "/imgAD/Antes.png",
+      after: "/imgAD/Despues.png",
+      details: [
+        { label: "Tiempo de entrega", value: "5 Días Hábiles" },
+        { label: "Material principal", value: "USG Sheetrock® Firecode" },
+        { label: "Nivel de acabado", value: "Nivel 5 (Exquisitez Total)" }
+      ]
+    },
+    {
+      title: "Estructuras Comerciales Modernas",
+      service: "Muros Divisorios y Plafones",
+      description: "Desarrollo completo de oficinas corporativas con divisiones acústicas. Diseñado para un aislamiento acústico superior entre oficinas, cumpliendo estrictas normas de seguridad contra incendios.",
+      tags: ["Comercial", "Muros Divisorios", "Resistente al Fuego"],
+      before: "/imgAD/Antes2.png",
+      after: "/imgAD/Despues2.png",
+      details: [
+        { label: "Tiempo de entrega", value: "10 Días Hábiles" },
+        { label: "Material principal", value: "Panel de Yeso Rh / Acústico" },
+        { label: "Nivel de acabado", value: "Nivel 4 (Estándar Comercial)" }
+      ]
+    },
+    {
+      title: "Cajillos de Luz Indirecta & Diseño",
+      service: "Remodelación Estética",
+      description: "Remodelación decorativa de techos a doble nivel con integración de cajillos para iluminación LED indirecta, logrando un ambiente sofisticado, cálido y moderno en espacios comunes.",
+      tags: ["Diseño de Interiores", "Luz Indirecta", "Remodelación"],
+      before: "/imgAD/Antes3.png",
+      after: "/imgAD/Despues3.png",
+      details: [
+        { label: "Tiempo de entrega", value: "7 Días Hábiles" },
+        { label: "Material principal", value: "Drywall Flexible & Suspensiones" },
+        { label: "Nivel de acabado", value: "Nivel 5 (Superficie Perfecta)" }
+      ]
+    }
+  ];
+
+  const currentProject = projects[activeProjectIndex];
   return (
     <>
       {/* Hero Section */}
@@ -59,48 +106,48 @@ export default function Inicio() {
       </section>
 
       {/* Before/After Carousel */}
-      <section className="py-24 bg-td-white dark:bg-td-dark">
+      <section className="py-24 bg-td-white dark:bg-td-dark transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-6 lg:px-20">
+          {/* Section Header */}
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
             <div className="space-y-2">
               <h2 className="text-td-green font-bold tracking-widest text-sm uppercase">Portafolio</h2>
               <h3 className="text-4xl font-black text-slate-900 dark:text-white">Nuestros Resultados</h3>
             </div>
-            <div className="flex gap-2">
-              <button className="p-3 rounded-full border border-slate-200 dark:border-white/10 dark:text-white hover:bg-td-green hover:text-td-dark transition-colors">
-                <span className="material-symbols-outlined">arrow_back</span>
+            {/* Arrows */}
+            <div className="flex gap-3">
+              <button 
+                onClick={() => setActiveProjectIndex((prev) => (prev - 1 + projects.length) % projects.length)}
+                className="p-3 rounded-full border border-slate-200 dark:border-white/10 dark:text-white hover:bg-td-green hover:text-td-dark transition-all duration-300 shadow-sm active:scale-95"
+                aria-label="Proyecto Anterior"
+              >
+                <span className="material-symbols-outlined select-none">arrow_back</span>
               </button>
-              <button className="p-3 rounded-full border border-slate-200 dark:border-white/10 dark:text-white hover:bg-td-green hover:text-td-dark transition-colors">
-                <span className="material-symbols-outlined">arrow_forward</span>
+              <button 
+                onClick={() => setActiveProjectIndex((prev) => (prev + 1) % projects.length)}
+                className="p-3 rounded-full border border-slate-200 dark:border-white/10 dark:text-white hover:bg-td-green hover:text-td-dark transition-all duration-300 shadow-sm active:scale-95"
+                aria-label="Proyecto Siguiente"
+              >
+                <span className="material-symbols-outlined select-none">arrow_forward</span>
               </button>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-            {/* Project 1 */}
-            <div className="group relative bg-white dark:bg-white/5 rounded-3xl overflow-hidden border border-slate-200 dark:border-white/10">
-              <div className="flex flex-col sm:flex-row h-full">
-                <div className="relative w-full sm:w-1/2 overflow-hidden h-64 sm:h-auto">
-                  <img alt="Before" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbVKhLXC3JhMpRUkCdMpGLyt5QWLbqE6F63CNO4Dpf9gM-zuxYmbIKdWYaP_YjxlGpshZ6kKUmOoY-x6JoqbMAbBuheeC8TQEgPUDdZrc8IbXP1ZcbMvg-6Ri3_K-Ot0pF6CvRH922XY53KwIQ3u_PpXXjELG4f8uk6OIAjpv4S9FnjoPewwVXFVtqE1s9PyQUm4Te04OYbiD0Wz0GLCbaOc_KnycZgzVNj7NoKRQvGAha--Gj63iCPB5AleeGc7t2SOlF06ZiD20" />
-                  <div className="absolute top-4 left-4 bg-td-dark/80 text-white px-3 py-1 rounded-lg text-xs font-bold backdrop-blur-sm">ANTES</div>
-                </div>
-                <div className="relative w-full sm:w-1/2 overflow-hidden h-64 sm:h-auto">
-                  <img alt="After" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAab9gBixA0lkpDpRrV8np3h8aDyQ6lZjFFi2pI83YZfYAeiLaxhE5zlW5Ajy8MgkRKqNfjSdaPwvmsl-aT24a7xJCRAFdQuDrhCwWS74eN6XNlTyT4O4whcvl99fJmcbKgMlWui7G_zKlelhjmtu6PnAFzN8n4xP8bR4hRe9WRBSrh8vjVu-tdpDG8t1HEOSP6TjXYoRNM8L8vcpVnO10F3YAluNRPnnS92WTRUsz-BTH8NLVQvdETX7TCiOJRx3msjnlWbDeSCDs" />
-                  <div className="absolute top-4 right-4 bg-td-green text-td-dark px-3 py-1 rounded-lg text-xs font-bold">DESPUÉS</div>
-                </div>
-              </div>
+
+          {/* Interactive Widescreen Before/After Slider */}
+          <div className="w-full max-w-4xl mx-auto flex flex-col gap-6">
+            <div className="h-[350px] sm:h-[450px] md:h-[550px]">
+              <BeforeAfterSlider 
+                beforeImage={currentProject.before} 
+                afterImage={currentProject.after} 
+              />
             </div>
-            {/* Project 2 */}
-            <div className="group relative bg-white dark:bg-white/5 rounded-3xl overflow-hidden border border-slate-200 dark:border-white/10">
-              <div className="flex flex-col sm:flex-row h-full">
-                <div className="relative w-full sm:w-1/2 overflow-hidden h-64 sm:h-auto">
-                  <img alt="Before 2" className="w-full h-full object-cover grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrbJvQPK2LnmgdtY5Fp7eptci3ghWKhyW8Z4GwI4oGwK1LkJrDPkSRY0qzjlKLdcScwyhDukGbiG14C2FqBHaXtm-vKrDW5mrAr-p4y7JXDFklAmVhzszUkJnZga9zVKc9yiipmiHs29wFBCB7lZrSqz3FBhspPZ5q22T8MWBjwpbd-e46K-xRHTNv4m6NDn7JpSCixDkzJSF5Cb0PXdt2Fit0WCkScsVcj_uy_wz-3Ety9th3g4ozhcqMgeqmroCRN0N5fISXv7Q" />
-                  <div className="absolute top-4 left-4 bg-td-dark/80 text-white px-3 py-1 rounded-lg text-xs font-bold backdrop-blur-sm">ANTES</div>
-                </div>
-                <div className="relative w-full sm:w-1/2 overflow-hidden h-64 sm:h-auto">
-                  <img alt="After 2" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiOzhotOAsQxOX6XUTxFNSxKWK4yBhXaLRDctIvIFcidBPkXOHHK9IvI-x2tghqmo0XhHIyVxOkdHI9h-xSVfysCaXi6yc-MPGZcsOjD_siiQacPWVTDPO_awUcnuI8xs1-UXX1bzVGwyyRmWi1iT1MnkY4kiweaUcIBRu3CXg6urfBXANQRB5VrU1XTA6up8pjJsLfuLDfLeUZgDSFqoiY4jyjAFpP-4ITRf6tI25gFQqPsfkBq4q9r4U6mfZ3I99cFqpdmREDrM" />
-                  <div className="absolute top-4 right-4 bg-td-green text-td-dark px-3 py-1 rounded-lg text-xs font-bold">DESPUÉS</div>
-                </div>
-              </div>
+            <div className="px-4 text-center">
+              <span className="text-xs font-black tracking-widest text-td-green bg-td-green/10 border border-td-green/20 px-3 py-1 rounded-full uppercase">
+                {currentProject.service}
+              </span>
+              <h4 className="mt-2.5 text-xl font-black text-slate-900 dark:text-white leading-tight">
+                {currentProject.title}
+              </h4>
             </div>
           </div>
         </div>
