@@ -91,6 +91,7 @@ export default function Proyectos() {
                 <span className="text-[#006c49] font-bold tracking-widest text-sm uppercase block mb-2">Opiniones</span>
                 <h2 className="text-4xl md:text-5xl font-headline font-extrabold text-[#141b2b] tracking-tighter">Testimonios de Clientes</h2>
               </div>
+
               <p className="text-[#3c4a42] max-w-md">La confianza de nuestros clientes es el cimiento de cada estructura que construimos.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

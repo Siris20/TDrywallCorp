@@ -1,6 +1,6 @@
 export default function Nosotros() {
   return (
-    <div className="bg-[#f6f8f6] dark:bg-[#131f16] font-['Inter',sans-serif] text-slate-900 dark:text-slate-100 transition-colors duration-300">
+    <div className="bg-[#131f16] font-['Inter',sans-serif] text-slate-900 dark:text-slate-100 transition-colors duration-300">
       <main className="flex flex-col flex-1">
         {/* 1. Hero Section */}
         <section className="relative w-full h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
@@ -20,13 +20,13 @@ export default function Nosotros() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
               <div className="inline-block px-3 py-1 rounded-full bg-[#28A745]/20 text-[#28A745] text-xs font-bold uppercase tracking-wider mb-2">Trayectoria</div>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-100 leading-tight">Forjando un legado de precisión desde 2017</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-100 leading-tight">Forjando un legado de precisión desde 1999</h2>
               <div className="prose prose-invert text-slate-400 leading-relaxed max-w-lg">
                 <p>
-                  Drywall Contractor nació en 2017 con una visión clara: elevar los estándares de la construcción en seco. Lo que comenzó como un pequeño equipo de instaladores apasionados, se ha transformado en una fuerza líder en el sector, reconocida por su puntualidad y detalle.
+                  Drywall Contractor nació de la pasión y la experiencia acumulada durante más de dos décadas en la industria. Lo que comenzó en 1999 como un camino de aprendizaje y maestría en las técnicas de construcción en seco, se consolidó en 2021 con el firme propósito de elevar nuestro compromiso con los estandares mas elevados del sector. Nuestra prioridad es combinar la sabiduría del oficio con el rigor técnico que solo una empresa con licencia profesional puede garantizar.
                 </p>
-                <p>
-                  A lo largo de estos años, hemos completado cientos de proyectos residenciales y comerciales, adaptándonos constantemente a las nuevas tecnologías y materiales. Nuestra meta para 2026 es consolidarnos como la empresa de acabados más confiable del país, integrando procesos sostenibles y eficiencia digital en cada obra que emprendemos.
+                <p className="text-4xl md:text-4xl font-black leading-tight tracking-tight my-6 text-center text-td-green">
+                  " 25 Años en el sector "
                 </p>
               </div>
             </div>
@@ -38,8 +38,8 @@ export default function Nosotros() {
                     <div className="w-1 h-full bg-[#28A745]/30 min-h-[40px]"></div>
                   </div>
                   <div>
-                    <h4 className="text-slate-100 font-bold">Fundación</h4>
-                    <p className="text-slate-400 text-sm">Inicio de operaciones con foco residencial.</p>
+                    <h4 className="text-slate-100 font-bold">El Comienzo</h4>
+                    <p className="text-slate-400 text-sm">Inicio de una trayectoria de aprendizaje profundo en todas las etapas del drywall, dominando desde la estructura hasta los acabados finos.</p>
                   </div>
                 </div>
                 <div className="flex gap-6 items-start">
@@ -48,8 +48,8 @@ export default function Nosotros() {
                     <div className="w-1 h-full bg-[#28A745]/30 min-h-[40px]"></div>
                   </div>
                   <div>
-                    <h4 className="text-slate-100 font-bold">Expansión Comercial</h4>
-                    <p className="text-slate-400 text-sm">Primeros proyectos corporativos de gran escala.</p>
+                    <h4 className="text-slate-100 font-bold">Formalización y Visión</h4>
+                    <p className="text-slate-400 text-sm">Registro oficial y comienzo del proceso de certificación profesional para dar el salto de instalador experimentado a contratista con licencia.</p>
                   </div>
                 </div>
                 <div className="flex gap-6 items-start">
@@ -58,8 +58,8 @@ export default function Nosotros() {
                     <div className="w-1 h-full bg-[#28A745]/30 min-h-[40px]"></div>
                   </div>
                   <div>
-                    <h4 className="text-slate-100 font-bold">Liderazgo Regional</h4>
-                    <p className="text-slate-400 text-sm">Certificaciones internacionales de calidad.</p>
+                    <h4 className="text-slate-100 font-bold">Licencia y Liderazgo</h4>
+                    <p className="text-slate-400 text-sm">Obtención del certificado oficial de contratista, garantizando seguridad, cumplimiento de normas y respaldo legal en cada obra.</p>
                   </div>
                 </div>
                 <div className="flex gap-6 items-start">
@@ -67,8 +67,8 @@ export default function Nosotros() {
                     <div className="w-10 h-10 rounded-full bg-[#28A745]/10 border-2 border-dashed border-[#28A745] flex items-center justify-center text-[#28A745] font-bold">26</div>
                   </div>
                   <div>
-                    <h4 className="text-[#28A745] font-bold">Visión Sostenible</h4>
-                    <p className="text-slate-400 text-sm">Referente en construcción ecológica y eficiencia.</p>
+                    <h4 className="text-[#28A745] font-bold">El Futuro</h4>
+                    <p className="text-slate-400 text-sm">Consolidarnos como el referente local en acabados de alta gama y especialistas en Build-Outs para franquicias, garantizando el cumplimiento estricto de los estándares corporativos y tiempos de entrega críticos.</p>
                   </div>
                 </div>
               </div>
@@ -92,7 +92,7 @@ export default function Nosotros() {
                   <span className="material-symbols-outlined text-[#28A745] group-hover:text-slate-900 text-3xl">speed</span>
                 </div>
                 <h3 className="text-xl font-bold text-slate-100 mb-3">Rapidez</h3>
-                <p className="text-slate-400 text-sm">Entregas garantizadas en un rango de 7 a 15 días hábiles, sin comprometer la calidad.</p>
+                <p className="text-slate-400 text-sm">Entregas en un rango de 7 a 15 días hábiles, sin comprometer la calidad.</p>
               </div>
               {/* Card 2 */}
               <div className="p-8 rounded-xl bg-[#131f16] border border-[#28A745]/20 hover:border-[#28A745] transition-all group flex flex-col items-center text-center">
@@ -100,7 +100,7 @@ export default function Nosotros() {
                   <span className="material-symbols-outlined text-[#28A745] group-hover:text-slate-900 text-3xl">cleaning_services</span>
                 </div>
                 <h3 className="text-xl font-bold text-slate-100 mb-3">Limpieza Total</h3>
-                <p className="text-slate-400 text-sm">Entregamos espacios listos para habitar, libres de polvo y residuos de construcción.</p>
+                <p className="text-slate-400 text-sm">Entregamos espacios libres de polvo y residuos de construcción.</p>
               </div>
               {/* Card 3 */}
               <div className="p-8 rounded-xl bg-[#131f16] border border-[#28A745]/20 hover:border-[#28A745] transition-all group flex flex-col items-center text-center">
@@ -108,7 +108,7 @@ export default function Nosotros() {
                   <span className="material-symbols-outlined text-[#28A745] group-hover:text-slate-900 text-3xl">verified</span>
                 </div>
                 <h3 className="text-xl font-bold text-slate-100 mb-3">Materiales Premium</h3>
-                <p className="text-slate-400 text-sm">Trabajamos exclusivamente con las mejores marcas del mercado internacional.</p>
+                <p className="text-slate-400 text-sm">Trabajamos con las mejores marcas o con las espesificadas por el cliente.</p>
               </div>
               {/* Card 4 */}
               <div className="p-8 rounded-xl bg-[#131f16] border border-[#28A745]/20 hover:border-[#28A745] transition-all group flex flex-col items-center text-center">
@@ -121,84 +121,7 @@ export default function Nosotros() {
             </div>
           </div>
         </section>
-
-        {/* 4. Testimonials */}
-        <section className="py-20 px-6 lg:px-20 max-w-7xl mx-auto w-full">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-            <div className="max-w-xl">
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-100">Lo que dicen nuestros clientes</h2>
-              <p className="text-slate-400 mt-2">La confianza de nuestros clientes es el cimiento de cada obra.</p>
-            </div>
-            <div className="flex gap-2">
-              <button className="w-10 h-10 rounded-full border border-[#28A745]/20 flex items-center justify-center text-[#28A745] hover:bg-[#28A745] hover:text-slate-900 transition-colors">
-                <span className="material-symbols-outlined">chevron_left</span>
-              </button>
-              <button className="w-10 h-10 rounded-full border border-[#28A745]/20 flex items-center justify-center text-[#28A745] hover:bg-[#28A745] hover:text-slate-900 transition-colors">
-                <span className="material-symbols-outlined">chevron_right</span>
-              </button>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Testimonial 1 */}
-            <div className="p-8 rounded-2xl bg-[#28A745]/5 border border-[#28A745]/10 relative">
-              <span className="material-symbols-outlined text-[#28A745]/30 text-6xl absolute top-4 right-8">format_quote</span>
-              <div className="flex text-[#28A745] mb-4">
-                <span className="material-symbols-outlined fill-1">star</span>
-                <span className="material-symbols-outlined fill-1">star</span>
-                <span className="material-symbols-outlined fill-1">star</span>
-                <span className="material-symbols-outlined fill-1">star</span>
-                <span className="material-symbols-outlined fill-1">star</span>
-              </div>
-              <p className="text-slate-300 italic mb-8">"Increíble la rapidez. Terminaron mi oficina de 100m2 en tiempo récord y los acabados son simplemente perfectos. Muy recomendados."</p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-[#28A745]/20 flex items-center justify-center text-[#28A745] font-bold">RM</div>
-                <div>
-                  <h4 className="text-slate-100 font-bold">Roberto Méndez</h4>
-                  <p className="text-slate-500 text-xs">Director, TechOffice</p>
-                </div>
-              </div>
-            </div>
-            {/* Testimonial 2 */}
-            <div className="p-8 rounded-2xl bg-[#28A745]/5 border border-[#28A745]/10 relative">
-              <span className="material-symbols-outlined text-[#28A745]/30 text-6xl absolute top-4 right-8">format_quote</span>
-              <div className="flex text-[#28A745] mb-4">
-                <span className="material-symbols-outlined fill-1">star</span>
-                <span className="material-symbols-outlined fill-1">star</span>
-                <span className="material-symbols-outlined fill-1">star</span>
-                <span className="material-symbols-outlined fill-1">star</span>
-                <span className="material-symbols-outlined fill-1">star</span>
-              </div>
-              <p className="text-slate-300 italic mb-8">"Lo que más me sorprendió fue la limpieza. Al final de cada día el sitio estaba ordenado, y al terminar no tuve que contratar a nadie extra."</p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-[#28A745]/20 flex items-center justify-center text-[#28A745] font-bold">AS</div>
-                <div>
-                  <h4 className="text-slate-100 font-bold">Ana Sofía Valera</h4>
-                  <p className="text-slate-500 text-xs">Propietaria Residencial</p>
-                </div>
-              </div>
-            </div>
-            {/* Testimonial 3 */}
-            <div className="p-8 rounded-2xl bg-[#28A745]/5 border border-[#28A745]/10 relative">
-              <span className="material-symbols-outlined text-[#28A745]/30 text-6xl absolute top-4 right-8">format_quote</span>
-              <div className="flex text-[#28A745] mb-4">
-                <span className="material-symbols-outlined fill-1">star</span>
-                <span className="material-symbols-outlined fill-1">star</span>
-                <span className="material-symbols-outlined fill-1">star</span>
-                <span className="material-symbols-outlined fill-1">star</span>
-                <span className="material-symbols-outlined fill-1">star</span>
-              </div>
-              <p className="text-slate-300 italic mb-8">"Profesionalismo de principio a fin. Me asesoraron con los materiales y se encargaron de todos los permisos. Cero dolores de cabeza."</p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-[#28A745]/20 flex items-center justify-center text-[#28A745] font-bold">JL</div>
-                <div>
-                  <h4 className="text-slate-100 font-bold">Juan Luis Castro</h4>
-                  <p className="text-slate-500 text-xs">Arquitecto Independiente</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
-    </div>
+    </div >
   );
 }

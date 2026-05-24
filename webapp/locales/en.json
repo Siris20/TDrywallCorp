@@ -1,0 +1,72 @@
+{
+  "navbar": {
+    "inicio": "Home",
+    "servicios": "Services",
+    "proyectos": "Projects",
+    "nosotros": "About Us",
+    "cotizar": "QUOTE",
+    "es": "ES",
+    "en": "EN"
+  },
+  "servicios": {
+    "header": {
+      "title1": "Detailed",
+      "title2": "Services",
+      "description": "A comprehensive system for every phase of construction, ensuring perfect results from the structure to the last detail."
+    },
+    "fase1": {
+      "badge": "Phase 01: Structure",
+      "title": "Metal Framing",
+      "subtitle": "\"The skeleton of construction\"",
+      "desc": "Lightweight structural systems designed to support loads and resist stress.",
+      "processTitle": "Technical Process",
+      "li1": "Framing of walls and room divisions.",
+      "li2": "Reinforcements in doors and windows.",
+      "li3": "Bulkheads for lights and dropped ceilings.",
+      "li4": "Laser leveling so everything is straight.",
+      "specialty": "OUR SPECIALTY"
+    },
+    "fase2": {
+      "badge": "Phase 02: Enclosure",
+      "title": "Drywall Installation",
+      "subtitle": "\"The core of the design\"",
+      "desc": "Integration of specialized panels depending on the area, optimizing execution times with a clean and modular assembly system.",
+      "processTitle": "Modular Sequence",
+      "li1": "White Board:",
+      "li1Desc": "For bedrooms and living rooms.",
+      "li2": "Green Board:",
+      "li2Desc": "For bathrooms and damp areas.",
+      "li3": "Red Board:",
+      "li3Desc": "For kitchens or commercial premises.",
+      "li4": "Insulation:",
+      "li4Desc": "Internal fiberglass for acoustic control.",
+      "types": "Panel Types",
+      "zeroWaste": "Zero Waste",
+      "type1": "Regular",
+      "type2": "RH Green",
+      "type3": "RF Red"
+    },
+    "fase3": {
+      "badge": "Phase 03: Aesthetics",
+      "title": "Finishes and Detailing",
+      "subtitle": "\"The skin of the structure\"",
+      "desc": "Treatment of joints and surfaces designed for grazing lighting and luxury finishes where imperfections have no place.",
+      "processTitle": "Premium Treatment",
+      "li1": "Level 3:",
+      "li1Desc": "Ideal preparation for textured finishes.",
+      "li2": "Level 4:",
+      "li2Desc": "Standard smooth finish for matte or satin paint.",
+      "li3": "Level 5:",
+      "li3Desc": "Full skim coat for maximum quality (Mirror effect).",
+      "detailers": "We are Detail-Oriented",
+      "goldStandard": "The Gold Standard",
+      "level5": "Level 5"
+    },
+    "cta": {
+      "title": "Ready to raise the standard of your project?",
+      "desc": "We are ready to advise you at any technical stage of your project.",
+      "contact": "CONTACT AN EXPERT",
+      "quote": "GET A QUOTE"
+    }
+  }
+}

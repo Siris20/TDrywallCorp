@@ -9,7 +9,7 @@ export default function Inicio() {
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-20 w-full">
           <div className="max-w-2xl space-y-6">
-            <span className="inline-block px-4 py-1 rounded-full bg-td-green/20 text-td-green text-xs font-bold uppercase tracking-widest border border-td-green/30">Líderes en Guadalajara</span>
+            <span className="inline-block px-4 py-1 rounded-full bg-td-green/20 text-td-green text-xs font-bold uppercase tracking-widest border border-td-green/30">Ofrecemos Todos los Servicios de Drywall </span>
             <h2 className="text-5xl lg:text-7xl font-black text-white leading-[1.1] tracking-tighter">
               Expertos en <span className="text-td-green">Instalación</span> de Drywall Profesional
             </h2>
@@ -34,23 +34,23 @@ export default function Inicio() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-td-green/50 transition-colors group">
               <span className="material-symbols-outlined text-td-green text-4xl mb-4 group-hover:scale-110 transition-transform inline-block">construction</span>
-              <h3 className="text-3xl font-black text-white">+120</h3>
+              <h3 className="text-3xl font-black text-white">+25</h3>
               <p className="text-slate-400 text-sm font-medium uppercase tracking-wider">Proyectos realizados</p>
             </div>
             <div className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-td-green/50 transition-colors group">
               <span className="material-symbols-outlined text-td-green text-4xl mb-4 group-hover:scale-110 transition-transform inline-block">history</span>
-              <h3 className="text-3xl font-black text-white">8 Años</h3>
+              <h3 className="text-3xl font-black text-white">23 Años</h3>
               <p className="text-slate-400 text-sm font-medium uppercase tracking-wider">Experiencia sólida</p>
             </div>
             <div className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-td-green/50 transition-colors group">
               <span className="material-symbols-outlined text-td-green text-4xl mb-4 group-hover:scale-110 transition-transform inline-block">verified_user</span>
-              <h3 className="text-3xl font-black text-white">24 Meses</h3>
-              <p className="text-slate-400 text-sm font-medium uppercase tracking-wider">Garantía total</p>
+              <h3 className="text-3xl font-black text-white">7 - 14 Dias</h3>
+              <p className="text-slate-400 text-sm font-medium uppercase tracking-wider">Entrega a tiempo</p>
             </div>
             <div className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-td-green/50 transition-colors group">
               <span className="material-symbols-outlined text-td-green text-4xl mb-4 group-hover:scale-110 transition-transform inline-block">cleaning_services</span>
               <h3 className="text-3xl font-black text-white">100%</h3>
-              <p className="text-slate-400 text-sm font-medium uppercase tracking-wider">Limpieza final</p>
+              <p className="text-slate-400 text-sm font-medium uppercase tracking-wider">Limpieza final (segun contrato)</p>
             </div>
           </div>
         </div>
@@ -86,15 +86,6 @@ export default function Inicio() {
                   <div className="absolute top-4 right-4 bg-td-green text-td-dark px-3 py-1 rounded-lg text-xs font-bold">DESPUÉS</div>
                 </div>
               </div>
-              <div className="p-6 bg-white dark:bg-td-dark/50 border-t border-slate-200 dark:border-white/10">
-                <div className="flex justify-between items-center">
-                  <div>
-                    <h4 className="text-slate-900 dark:text-white font-bold text-lg">Residencial Providencia</h4>
-                    <p className="text-slate-500 dark:text-slate-400 text-sm">+45 m² de drywall – Guadalajara</p>
-                  </div>
-                  <span className="material-symbols-outlined text-td-green">open_in_new</span>
-                </div>
-              </div>
             </div>
             {/* Project 2 */}
             <div className="group relative bg-white dark:bg-white/5 rounded-3xl overflow-hidden border border-slate-200 dark:border-white/10">
@@ -106,15 +97,6 @@ export default function Inicio() {
                 <div className="relative w-full sm:w-1/2 overflow-hidden h-64 sm:h-auto">
                   <img alt="After 2" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiOzhotOAsQxOX6XUTxFNSxKWK4yBhXaLRDctIvIFcidBPkXOHHK9IvI-x2tghqmo0XhHIyVxOkdHI9h-xSVfysCaXi6yc-MPGZcsOjD_siiQacPWVTDPO_awUcnuI8xs1-UXX1bzVGwyyRmWi1iT1MnkY4kiweaUcIBRu3CXg6urfBXANQRB5VrU1XTA6up8pjJsLfuLDfLeUZgDSFqoiY4jyjAFpP-4ITRf6tI25gFQqPsfkBq4q9r4U6mfZ3I99cFqpdmREDrM" />
                   <div className="absolute top-4 right-4 bg-td-green text-td-dark px-3 py-1 rounded-lg text-xs font-bold">DESPUÉS</div>
-                </div>
-              </div>
-              <div className="p-6 bg-white dark:bg-td-dark/50 border-t border-slate-200 dark:border-white/10">
-                <div className="flex justify-between items-center">
-                  <div>
-                    <h4 className="text-slate-900 dark:text-white font-bold text-lg">Oficinas Corporativas Zapopan</h4>
-                    <p className="text-slate-500 dark:text-slate-400 text-sm">+120 m² de drywall – Guadalajara</p>
-                  </div>
-                  <span className="material-symbols-outlined text-td-green">open_in_new</span>
                 </div>
               </div>
             </div>
@@ -139,7 +121,7 @@ export default function Inicio() {
       {/* Client/Partner Logos */}
       <section className="py-16 bg-white dark:bg-td-dark border-b border-slate-100 dark:border-white/5">
         <div className="max-w-7xl mx-auto px-6 lg:px-20">
-          <p className="text-center text-slate-500 dark:text-slate-400 text-sm font-bold tracking-widest uppercase mb-10">Empresas que confían en nosotros</p>
+          <p className="text-center text-slate-500 dark:text-slate-400 text-sm font-bold tracking-widest uppercase mb-10">LA MEJOR CALIDAD EN NUESTROS MATERIALES</p>
           <div className="flex flex-wrap justify-center items-center gap-12 lg:gap-24 opacity-60 grayscale hover:grayscale-0 transition-all">
             <div className="flex items-center gap-2">
               <span className="material-symbols-outlined text-4xl dark:text-white">apartment</span>

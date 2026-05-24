@@ -1,0 +1,72 @@
+{
+  "navbar": {
+    "inicio": "Inicio",
+    "servicios": "Servicios",
+    "proyectos": "Proyectos",
+    "nosotros": "Nosotros",
+    "cotizar": "COTIZAR",
+    "es": "ES",
+    "en": "EN"
+  },
+  "servicios": {
+    "header": {
+      "title1": "Servicios",
+      "title2": "Detallados",
+      "description": "Un sistema integral para cada fase de la construcción, asegurando resultados perfectos desde la estructura hasta el último detalle."
+    },
+    "fase1": {
+      "badge": "Fase 01: Estructura",
+      "title": "Metal Framing",
+      "subtitle": "\"El esqueleto de la construcción\"",
+      "desc": "Sistemas estructurales ligeros diseñados para soportar cargas y resistir esfuerzos.",
+      "processTitle": "Proceso Técnico",
+      "li1": "Armado de muros y divisiones de cuartos.",
+      "li2": "Refuerzos en puertas y ventanas.",
+      "li3": "Cajillos para luces y techos caídos.",
+      "li4": "Nivelación láser para que todo quede derecho.",
+      "specialty": "NUESTRA ESPECIALIDAD"
+    },
+    "fase2": {
+      "badge": "Fase 02: Cerramiento",
+      "title": "Instalación de Paneles",
+      "subtitle": "\"El núcleo del diseño\"",
+      "desc": "Integración de paneles especializados según la zona, optimizando tiempos de ejecución con un sistema de montaje limpio y modular.",
+      "processTitle": "Secuencia Modular",
+      "li1": "Hoja Blanca:",
+      "li1Desc": "Para recámaras y salas.",
+      "li2": "Hoja Verde:",
+      "li2Desc": "Para baños y zonas con humedad.",
+      "li3": "Hoja Roja:",
+      "li3Desc": "Para cocinas o locales comerciales.",
+      "li4": "Aislamiento:",
+      "li4Desc": "Fibra de vidrio interna para control acústico.",
+      "types": "Tipos de Panel",
+      "zeroWaste": "Zero Waste",
+      "type1": "Regular",
+      "type2": "RH Green",
+      "type3": "RF Red"
+    },
+    "fase3": {
+      "badge": "Fase 03: Estética",
+      "title": "Acabados y Detallado",
+      "subtitle": "\"La piel de la estructura\"",
+      "desc": "Tratamiento de juntas y superficies diseñado para iluminación rasante y acabados de lujo donde las imperfecciones no tienen lugar.",
+      "processTitle": "Tratamiento Premium",
+      "li1": "Nivel 3:",
+      "li1Desc": "Preparación ideal para acabados con textura.",
+      "li2": "Nivel 4:",
+      "li2Desc": "Acabado liso estándar para pintura mate o satinada.",
+      "li3": "Nivel 5:",
+      "li3Desc": "Empastado total para máxima calidad (Efecto espejo).",
+      "detailers": "Somos Detallistas",
+      "goldStandard": "The Gold Standard",
+      "level5": "Level 5"
+    },
+    "cta": {
+      "title": "¿Listo para elevar el estándar de su proyecto?",
+      "desc": "Estamos listos para asesorarle en cualquier etapa técnica para su obra.",
+      "contact": "CONTACTAR CON UN EXPERTO",
+      "quote": "COTIZAR ESTIMADO"
+    }
+  }
+}

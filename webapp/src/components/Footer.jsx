@@ -7,8 +7,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
             <div className="flex items-center gap-2 text-accent-lime">
-              <span className="material-symbols-outlined text-3xl">architecture</span>
-              <h2 className="text-white text-xl font-bold tracking-tight">Drywall<span className="text-accent-lime">Inc</span></h2>
+              <img src="./logo.webp" alt="Logo" className="h-10 w-auto" />
+              <h2 className="text-white text-xl font-bold tracking-tight">Drywall<span className="text-accent-lime">Contractor</span></h2>
             </div>
             <p className="text-slate-400 leading-relaxed">
               Comprometidos con la excelencia en la construcción ligera y acabados de primera calidad en todo México.
@@ -39,7 +39,7 @@ export default function Footer() {
               <li><Link to="/servicios" className="hover:text-accent-lime transition-colors">Metal Framing Structures</Link></li>
               <li><Link to="/servicios" className="hover:text-accent-lime transition-colors">Drywall Installation</Link></li>
               <li><Link to="/servicios" className="hover:text-accent-lime transition-colors">Drywall Finishing</Link></li>
-              <li><Link to="/servicios" className="hover:text-accent-lime transition-colors">Proximamente: Acabados Finales</Link></li>
+              <li><Link to="/servicios" className="hover:text-accent-lime transition-colors">Proximamente: Acabados Finales con pintura</Link></li>
             </ul>
           </div>
           <div>
