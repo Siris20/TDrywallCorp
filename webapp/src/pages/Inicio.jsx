@@ -1,3 +1,5 @@
+import InfiniteMarquee from '../components/InfiniteMarquee';
+
 export default function Inicio() {
   return (
     <>
@@ -119,23 +121,12 @@ export default function Inicio() {
       </section>
 
       {/* Client/Partner Logos */}
-      <section className="py-16 bg-white dark:bg-td-dark border-b border-slate-100 dark:border-white/5">
-        <div className="max-w-7xl mx-auto px-6 lg:px-20">
-          <p className="text-center text-slate-500 dark:text-slate-400 text-sm font-bold tracking-widest uppercase mb-10">LA MEJOR CALIDAD EN NUESTROS MATERIALES</p>
-          <div className="flex flex-wrap justify-center items-center gap-12 lg:gap-24 opacity-60 grayscale hover:grayscale-0 transition-all">
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-4xl dark:text-white">apartment</span>
-              <span className="text-2xl font-black dark:text-white">CONSTRU-Z</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-4xl dark:text-white">domain</span>
-              <span className="text-2xl font-black dark:text-white">URBAN_MX</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-4xl dark:text-white">foundation</span>
-              <span className="text-2xl font-black dark:text-white">CORE_BUILD</span>
-            </div>
-          </div>
+      <section className="py-16 bg-white dark:bg-td-dark border-b border-slate-100 dark:border-white/5 w-full overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-20 mb-10">
+          <p className="text-center text-slate-500 dark:text-slate-400 text-sm font-bold tracking-widest uppercase">LA MEJOR CALIDAD EN NUESTROS MATERIALES</p>
+        </div>
+        <div className="w-full">
+          <InfiniteMarquee images={['/Marca1.webp', '/Marca2.webp', '/Marca3.webp', '/Marca4.webp']} />
         </div>
       </section>
 

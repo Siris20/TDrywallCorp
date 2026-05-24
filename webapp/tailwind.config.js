@@ -30,6 +30,15 @@ export default {
       },
       borderRadius: {
         'xl': '20px', // El radio mandatory de tu Design System
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+      },
+      animation: {
+        marquee: 'marquee 25s linear infinite',
       }
     },
   },

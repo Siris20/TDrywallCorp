@@ -14,3 +14,22 @@ body {
 .material-symbols-outlined {
     vertical-align: middle;
 }
+
+/* Animación de marquesina infinita garantizada */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite !important;
+}
+
+/* Pausar ambas pistas en sincronía al pasar el mouse por encima del contenedor */
+.marquee-container:hover .animate-marquee {
+  animation-play-state: paused !important;
+}
