@@ -1,4 +1,7 @@
 import { useState, useMemo } from "react";
+import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 import {
   SERVICES,
   TRAVEL_COST,
@@ -7,6 +10,28 @@ import {
   AREA_UNIT,
   calculateEstimate,
 } from "../pricingConfig";
+
+// --- Leaflet marker icon fix (Vite compatibility) ---
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+  iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
+  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+});
+
+// --- Map defaults (Manteca, CA — service area reaches San Jose) ---
+const DEFAULT_CENTER = [37.7975, -121.2160];
+const DEFAULT_ZOOM = 9;
+
+/** Click-to-place marker on the map */
+function LocationMarker({ position, setPosition }) {
+  useMapEvents({
+    click(e) {
+      setPosition([e.latlng.lat, e.latlng.lng]);
+    },
+  });
+  return position ? <Marker position={position} /> : null;
+}
 
 export default function Cotizacion() {
   // --- State ---
@@ -17,6 +42,7 @@ export default function Cotizacion() {
   const [zone, setZone] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [description, setDescription] = useState("");
+  const [location, setLocation] = useState(DEFAULT_CENTER);
 
   // --- Derived estimate ---
   const estimate = useMemo(
@@ -56,6 +82,7 @@ export default function Cotizacion() {
       `• Nombre: ${name}\n` +
       `• Teléfono: ${phone}\n` +
       `• Zona: ${zone}\n` +
+      `• Ubicación: https://www.google.com/maps?q=${location[0]},${location[1]}\n` +
       `• Detalles: ${description}`;
 
     const encoded = encodeURIComponent(message);
@@ -336,40 +363,57 @@ export default function Cotizacion() {
               </div>
             </div>
 
-            {/* Coverage Map */}
+            {/* Job Location Map */}
             <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
               <div className="p-4 border-b border-slate-100 dark:border-slate-800">
                 <h4 className="font-bold flex items-center gap-2">
                   <span className="material-symbols-outlined text-td-green">location_on</span>
-                  Coverage Area
+                  Job Location
                 </h4>
               </div>
-              <div className="aspect-square w-full relative group">
-                <img
-                  className="h-full w-full object-cover opacity-80 grayscale group-hover:grayscale-0 transition-all duration-700"
-                  alt="Coverage area map"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnUTBJ9Vn4_xruNgOditi4xrtmSLimFEp5u4IecxVsx7V8PQocP8eYTW5Ji2ZQJENCIM988HSos4aqInvRf5lDbw1xRNZREmkvGbAJQ0_D1bnAC4N-urJoLyYmBXymEBR1fMg7XDA-Z-cl7S1lJYVCOKyObgZxRZE6Hx6Hg0wUdsakwTrAYy5yZkRChtKl4elqqDi1X-LcZkkHLiR_U1eh7ACz0NoEgVT_CNmww7pinGM5OYsXBxJ_WlIg5rPfQAqdzPfYZ-4UB1Y"
-                />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative">
-                    <div className="absolute -inset-4 rounded-full bg-td-green/30 animate-ping"></div>
-                    <div className="relative h-4 w-4 rounded-full bg-td-green border-2 border-white"></div>
+              <div
+                className="w-full"
+                style={{ height: "280px" }}
+              >
+                <MapContainer
+                  center={DEFAULT_CENTER}
+                  zoom={DEFAULT_ZOOM}
+                  style={{ height: "100%", width: "100%" }}
+                  scrollWheelZoom={true}
+                >
+                  <TileLayer
+                    attribution='&copy; <a href="https://carto.com/">CARTO</a>'
+                    url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+                  />
+                  <LocationMarker position={location} setPosition={setLocation} />
+                </MapContainer>
+              </div>
+              <div className="p-3 space-y-2">
+                <p className="text-xs text-slate-500 dark:text-slate-400">
+                  Click on the map to pin the work location.
+                </p>
+                {location && (
+                  <div className="flex items-center gap-2 rounded-lg bg-slate-50 dark:bg-slate-800/50 px-3 py-2 text-sm">
+                    <span className="material-symbols-outlined text-base text-td-green">pin_drop</span>
+                    <span className="text-slate-600 dark:text-slate-400 font-mono text-xs">
+                      {location[0].toFixed(4)}, {location[1].toFixed(4)}
+                    </span>
+                    <a
+                      href={`https://www.google.com/maps?q=${location[0]},${location[1]}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-auto text-td-green hover:underline text-xs font-semibold flex items-center gap-1"
+                    >
+                      <span className="material-symbols-outlined text-sm">open_in_new</span>
+                      Maps
+                    </a>
                   </div>
-                </div>
+                )}
               </div>
             </div>
 
             {/* Trust Indicators */}
             <div className="grid grid-cols-1 gap-4">
-              <div className="flex items-start gap-4 rounded-lg border border-slate-200 dark:border-slate-800 p-4">
-                <span className="material-symbols-outlined text-td-green">verified</span>
-                <div>
-                  <h5 className="text-sm font-bold">Written Guarantee</h5>
-                  <p className="text-xs text-slate-500">
-                    All our work includes a 12-month warranty policy.
-                  </p>
-                </div>
-              </div>
               <div className="flex items-start gap-4 rounded-lg border border-slate-200 dark:border-slate-800 p-4">
                 <span className="material-symbols-outlined text-td-green">history</span>
                 <div>
