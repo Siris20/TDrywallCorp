@@ -3,7 +3,7 @@ export default function Nosotros() {
     <div className="bg-[#131f16] font-['Inter',sans-serif] text-slate-900 dark:text-slate-100 transition-colors duration-300">
       <main className="flex flex-col flex-1">
         {/* 1. Hero Section */}
-        <section className="relative w-full h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+        <section className="relative w-full h-[100vh] min-h-[400px] flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 bg-cover bg-center" data-alt="Professional construction team in uniform posing together" style={{ backgroundImage: 'linear-gradient(rgba(19, 31, 22, 0.7), rgba(19, 31, 22, 0.9)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDWrYHXi0Llfx7-WaywpaKbtfvcXVvxW2Hv9xgKOy-nD3g59mnSUOtyqvx61uqCCFiWTdjZcJONYym0C8QLWBe8um3xG-aseGQA4g7EzP2v8IIlZIW230Q0N5VyCw2H7cs9cIQzdA2be2d3kkLOJbPCAPuWAOBSDSwdoG2tdDwzN5KdgsgA5lqV8Qv2lwkqCpun0MYvVxJKD4ZnCAhkCEKTrGQhzmkQ2fFMJ-ICYUzOZWnWt66wPm94vRFWIxKs3ISiJksebU7yU78")' }}></div>
           <div className="relative z-10 text-center px-4 max-w-4xl">
             <h1 className="text-slate-100 text-4xl md:text-6xl font-black leading-tight tracking-tight mb-4">

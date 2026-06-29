@@ -51,7 +51,7 @@ export default function Inicio() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[85vh] w-full flex items-center justify-start overflow-hidden">
+      <section className="relative h-[120vh] w-full flex items-center justify-start overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img alt="Modern construction site with drywall" className="w-full h-full object-cover" data-alt="Interior of a large modern building under construction" src="https://th.bing.com/th/id/OIP.wENzab92ibpoTBz5wDCZDgHaE8?w=243&h=180&c=7&r=0&o=7&dpr=1.2&pid=1.7&rm=3" />
           <div className="absolute inset-0 bg-gradient-to-r from-td-dark via-td-dark/80 to-transparent"></div>
@@ -116,14 +116,14 @@ export default function Inicio() {
             </div>
             {/* Arrows */}
             <div className="flex gap-3">
-              <button 
+              <button
                 onClick={() => setActiveProjectIndex((prev) => (prev - 1 + projects.length) % projects.length)}
                 className="p-3 rounded-full border border-slate-200 dark:border-white/10 dark:text-white hover:bg-td-green hover:text-td-dark transition-all duration-300 shadow-sm active:scale-95"
                 aria-label="Proyecto Anterior"
               >
                 <span className="material-symbols-outlined select-none">arrow_back</span>
               </button>
-              <button 
+              <button
                 onClick={() => setActiveProjectIndex((prev) => (prev + 1) % projects.length)}
                 className="p-3 rounded-full border border-slate-200 dark:border-white/10 dark:text-white hover:bg-td-green hover:text-td-dark transition-all duration-300 shadow-sm active:scale-95"
                 aria-label="Proyecto Siguiente"
@@ -135,10 +135,10 @@ export default function Inicio() {
 
           {/* Interactive Widescreen Before/After Slider */}
           <div className="w-full max-w-4xl mx-auto flex flex-col gap-6">
-            <div className="h-[350px] sm:h-[450px] md:h-[550px]">
-              <BeforeAfterSlider 
-                beforeImage={currentProject.before} 
-                afterImage={currentProject.after} 
+            <div className="h-[275px] sm:h-[325px] md:h-[365px]">
+              <BeforeAfterSlider
+                beforeImage={currentProject.before}
+                afterImage={currentProject.after}
               />
             </div>
             <div className="px-4 text-center">
