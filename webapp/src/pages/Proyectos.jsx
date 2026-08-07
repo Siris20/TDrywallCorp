@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
+import { useTranslation } from "react-i18next"; // <-- Importamos el hook
 
 /* ───────────────────────── Video data ───────────────────────── */
 const allVideos = [
@@ -20,15 +21,16 @@ const allVideos = [
   "M4.mp4",
 ];
 
+// Cambiamos 'label' por 'labelKey' para traducirlo dentro del componente
 function getServiceInfo(filename) {
   const first = filename.charAt(0).toUpperCase();
   if (first === "D")
-    return { label: "Installation", color: "#E87A20", bg: "rgba(232,122,32,0.12)", border: "rgba(232,122,32,0.3)" };
+    return { labelKey: "proyectos.services.installation", color: "#E87A20", bg: "rgba(232,122,32,0.12)", border: "rgba(232,122,32,0.3)" };
   if (first === "M")
-    return { label: "Framing", color: "#1A8FE3", bg: "rgba(26,143,227,0.12)", border: "rgba(26,143,227,0.3)" };
+    return { labelKey: "proyectos.services.framing", color: "#1A8FE3", bg: "rgba(26,143,227,0.12)", border: "rgba(26,143,227,0.3)" };
   if (first === "F")
-    return { label: "Finishing", color: "#1DB954", bg: "rgba(29,185,84,0.12)", border: "rgba(29,185,84,0.3)" };
-  return { label: "Other", color: "#888", bg: "rgba(136,136,136,0.12)", border: "rgba(136,136,136,0.3)" };
+    return { labelKey: "proyectos.services.finishing", color: "#1DB954", bg: "rgba(29,185,84,0.12)", border: "rgba(29,185,84,0.3)" };
+  return { labelKey: "proyectos.services.other", color: "#888", bg: "rgba(136,136,136,0.12)", border: "rgba(136,136,136,0.3)" };
 }
 
 const videoData = allVideos.map((file) => ({
@@ -37,15 +39,18 @@ const videoData = allVideos.map((file) => ({
   ...getServiceInfo(file),
 }));
 
+// Usamos llaves de traducción en lugar de texto fijo
 const FILTERS = [
-  { key: "all", label: "All Projects", color: "#006c49" },
-  { key: "D", label: "Installation", color: "#E87A20" },
-  { key: "M", label: "Framing", color: "#1A8FE3" },
-  { key: "F", label: "Finishing", color: "#1DB954" },
+  { key: "all", labelKey: "proyectos.filters.all", color: "#006c49" },
+  { key: "D", labelKey: "proyectos.services.installation", color: "#E87A20" },
+  { key: "M", labelKey: "proyectos.services.framing", color: "#1A8FE3" },
+  { key: "F", labelKey: "proyectos.services.finishing", color: "#1DB954" },
 ];
 
 /* ────────────────────── VideoCard component ─────────────────── */
+/* ────────────────────── VideoCard component ─────────────────── */
 function VideoCard({ video }) {
+  const { t } = useTranslation();
   const videoRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -84,7 +89,6 @@ function VideoCard({ video }) {
         playsInline
         preload="auto"
         onLoadedData={(e) => {
-          // Ensure the first frame is rendered as a poster
           e.target.currentTime = 0.1;
         }}
       >
@@ -112,39 +116,26 @@ function VideoCard({ video }) {
         </div>
       </div>
 
-      {/* Service tag */}
+      {/* Service tag (Este es el que se queda) */}
       <div className="absolute top-4 left-4 z-10">
-        <span
-          className="px-4 py-1.5 rounded-full text-xs font-bold font-headline backdrop-blur-md tracking-wider uppercase"
-          style={{
-            background: `${video.color}DD`,
-            color: "#fff",
-            boxShadow: `0 4px 14px ${video.color}40`,
-          }}
-        >
-          {video.label}
-        </span>
-      </div>
-
-      {/* Bottom info */}
-      <div className="absolute bottom-5 left-5 right-5 z-10">
-        <h3 className="text-white font-headline font-bold text-lg leading-tight drop-shadow-lg">
-          {video.file.replace(".mp4", "")}
-        </h3>
-        <div className="flex items-center gap-2 mt-2">
+        <div className="flex items-center gap-2">
           <span
-            className="w-2 h-2 rounded-full inline-block animate-pulse"
+            className="w-4 h-4 rounded-full inline-block animate-pulse"
             style={{ background: video.color }}
           />
-          <p className="text-white/70 text-xs font-medium tracking-wide">{video.label}</p>
+          <p className="text-white/90 text-md font-bold tracking-wide drop-shadow-md">
+            {t(video.labelKey)} {/* <-- Solo dejamos la categoría traducida */}
+          </p>
         </div>
       </div>
+      
     </div>
   );
 }
 
 /* ───────────────────── Main Proyectos page ──────────────────── */
 export default function Proyectos() {
+  const { t } = useTranslation(); // <-- Inicializamos traducción para la página principal
   const [activeFilter, setActiveFilter] = useState("all");
   const carouselRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -203,7 +194,6 @@ export default function Proyectos() {
         <section className="relative py-12 px-6 overflow-hidden">
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-gradient-to-br from-[#f9f9ff] via-[#e8ecff] to-[#f0fff4]" />
-            {/* Decorative blobs */}
             <div
               className="absolute -top-32 -right-32 w-96 h-96 rounded-full opacity-20 blur-3xl"
               style={{ background: "radial-gradient(circle, #E87A20 0%, transparent 70%)" }}
@@ -221,11 +211,10 @@ export default function Proyectos() {
           <div className="max-w-7xl mx-auto relative z-10">
             <header className="mb-5">
               <h1 className="text-4xl md:text-5xl font-headline font-extrabold text-[#141b2b] tracking-tighter mb-3">
-                Portafolio de <span className="text-[#006c49]">Proyectos</span>
+                {t('proyectos.header.title1')} <span className="text-[#006c49]">{t('proyectos.header.title2')}</span>
               </h1>
               <p className="text-lg text-[#3c4a42] max-w-2xl leading-relaxed">
-                Explora nuestra maestría en acabados estructurales. Cada proyecto refleja nuestra precisión técnica y
-                compromiso con la calidad arquitectónica.
+                {t('proyectos.header.description')}
               </p>
             </header>
 
@@ -259,7 +248,7 @@ export default function Proyectos() {
                         }
                       }}
                     >
-                      {f.label}
+                      {t(f.labelKey)} {/* <-- Traducción de los botones */}
                       {isActive && (
                         <span className="ml-2 bg-white/25 text-white text-xs px-2 py-0.5 rounded-full">
                           {filtered.length}
@@ -276,7 +265,6 @@ export default function Proyectos() {
         {/* ── Video Carousel ───────────────────────────────────── */}
         <section className="py-2 px-6 max-w-[100vw] overflow-hidden">
           <div className="max-w-7xl mx-auto relative">
-            {/* Navigation arrows */}
             {canScrollLeft && (
               <button
                 onClick={() => scroll(-1)}
@@ -296,7 +284,6 @@ export default function Proyectos() {
               </button>
             )}
 
-            {/* Gradient fades on edges */}
             {canScrollLeft && (
               <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#f9f9ff] to-transparent z-10 pointer-events-none" />
             )}
@@ -304,7 +291,6 @@ export default function Proyectos() {
               <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#f9f9ff] to-transparent z-10 pointer-events-none" />
             )}
 
-            {/* Scrollable track */}
             <div
               ref={carouselRef}
               className="flex gap-6 overflow-x-auto py-4 px-2 scrollbar-hide"
@@ -326,7 +312,6 @@ export default function Proyectos() {
               ))}
             </div>
 
-            {/* Scroll indicator dots */}
             <div className="flex justify-center gap-2 mt-8">
               {filtered.map((video, i) => (
                 <button
@@ -359,7 +344,7 @@ export default function Proyectos() {
                   }}
                 >
                   <span className="w-3 h-3 rounded-full" style={{ background: f.color, boxShadow: `0 0 10px ${f.color}60` }} />
-                  <span className="font-headline font-bold text-sm text-[#141b2b]">{f.label}</span>
+                  <span className="font-headline font-bold text-sm text-[#141b2b]">{t(f.labelKey)}</span> {/* <-- Traducción */}
                   <span className="text-xs font-medium px-2 py-0.5 rounded-full" style={{ background: `${f.color}15`, color: f.color }}>
                     {f.key}
                   </span>

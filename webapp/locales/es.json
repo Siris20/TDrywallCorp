@@ -65,8 +65,185 @@
     "cta": {
       "title": "¿Listo para elevar el estándar de su proyecto?",
       "desc": "Estamos listos para asesorarle en cualquier etapa técnica para su obra.",
-      "contact": "CONTACTAR CON UN EXPERTO",
-      "quote": "COTIZAR ESTIMADO"
+      "contact": "CONSULTAR POR EMAIL",
+      "quote": "LLAMAR AHORA"
     }
-  }
+  },
+  "inicio": {
+    "hero": {
+      "badge": "Ofrecemos Todos los Servicios de Drywall",
+      "title1": "Expertos en",
+      "title2": "Instalación",
+      "title3": "de Drywall Profesional",
+      "desc": "Transformamos tus espacios con acabados de alta gama, rapidez garantizada y la máxima calidad técnica en el mercado.",
+      "btnProjects": "VER PROYECTOS",
+      "btnProcess": "NUESTRO PROCESO"
+    },
+    "stats": {
+      "projects": { "value": "+25", "label": "Proyectos realizados" },
+      "experience": { "value": "23 Años", "label": "Experiencia sólida" },
+      "delivery": { "value": "7 - 14 Días", "label": "Entrega a tiempo" },
+      "cleaning": { "value": "100%", "label": "Limpieza final (según contrato)" }
+    },
+    "portfolio": {
+      "subtitle": "Portafolio",
+      "title": "Nuestros Resultados",
+      "prevAria": "Proyecto Anterior",
+      "nextAria": "Proyecto Siguiente"
+    },
+    "projectsData": [
+      {
+        "title": "Instalación Residencial Premium",
+        "service": "Acabados de Alta Gama"
+      },
+      {
+        "title": "Estructuras Comerciales Modernas",
+        "service": "Muros Divisorios y Plafones"
+      },
+      {
+        "title": "Cajillos de Luz Indirecta & Diseño",
+        "service": "Remodelación Estética"
+      }
+    ],
+    "video": {
+      "title": "Mira cómo transformamos espacios",
+      "desc": "Un vistazo rápido a nuestro equipo en acción y la calidad que entregamos en cada m²."
+    },
+    "brands": {
+      "title": "LA MEJOR CALIDAD EN NUESTROS MATERIALES"
+    },
+    "cta": {
+      "title": "¿Listo para tu proyecto?",
+      "desc": "Solicita hoy mismo un presupuesto sin compromiso y hablemos de cómo mejorar tu propiedad.",
+      "btnEmail": "CONSULTAR POR EMAIL",
+      "btnCall": "LLAMAR AHORA"
+    }
+  },
+  "proyectos": {
+    "header": {
+      "title1": "Portafolio de",
+      "title2": "Proyectos",
+      "description": "Explora nuestra maestría en acabados estructurales. Cada proyecto refleja nuestra precisión técnica y compromiso con la calidad arquitectónica."
+    },
+    "filters": {
+      "all": "Todos los Proyectos"
+    },
+    "services": {
+      "installation": "Instalación",
+      "framing": "Metal Framing",
+      "finishing": "Acabados",
+      "other": "Otros"
+    }
+  },
+  "nosotros": {
+    "hero": {
+      "title": "El equipo que deja todo perfecto",
+      "subtitle": "Profesionales dedicados a la excelencia en construcción en seco y acabados de alta calidad."
+    },
+    "history": {
+      "badge": "Trayectoria",
+      "title": "Forjando un legado de precisión desde 1999",
+      "description": "Drywall Contractor nació de la pasión y la experiencia acumulada durante más de dos décadas en la industria. Lo que comenzó en 1999 como un camino de aprendizaje y maestría en las técnicas de construcción en seco, se consolidó en 2021 con el firme propósito de elevar nuestro compromiso con los estándares más elevados del sector. Nuestra prioridad es combinar la sabiduría del oficio con el rigor técnico que solo una empresa con licencia profesional puede garantizar.",
+      "highlight": "\" 25 Años en el sector \"",
+      "timeline": {
+        "start": {
+          "title": "El Comienzo",
+          "desc": "Inicio de una trayectoria de aprendizaje profundo en todas las etapas del drywall, dominando desde la estructura hasta los acabados finos."
+        },
+        "formalization": {
+          "title": "Formalización y Visión",
+          "desc": "Registro oficial y comienzo del proceso de certificación profesional para dar el salto de instalador experimentado a contratista con licencia."
+        },
+        "license": {
+          "title": "Licencia y Liderazgo",
+          "desc": "Obtención del certificado oficial de contratista, garantizando seguridad, cumplimiento de normas y respaldo legal en cada obra."
+        },
+        "future": {
+          "title": "El Futuro",
+          "desc": "Consolidarnos como el referente local en acabados de alta gama y especialistas en Build-Outs para franquicias, garantizando el cumplimiento estricto de los estándares corporativos y tiempos de entrega críticos."
+        }
+      }
+    },
+    "differentiators": {
+      "title": "¿Por qué elegirnos?",
+      "cards": {
+        "speed": {
+          "title": "Rapidez",
+          "desc": "Entrega en tiempo y forma, conforme a lo estipulado en el contrato."
+        },
+        "cleaning": {
+          "title": "Limpieza Total",
+          "desc": "Garantizamos la limpieza de nuestra área de trabajo, entregando el espacio libre del polvo y residuos generados por nuestra instalación."
+        },
+        "materials": {
+          "title": "Materiales Premium",
+          "desc": "Trabajamos con las mejores marcas o con las especificadas por el cliente."
+        },
+        "insurance": {
+          "title": "Permisos y Seguros",
+          "desc": "Cumplimos con toda la normativa vigente y seguros para su total tranquilidad."
+        }
+      }
+    }
+  },
+  "cotizacion": {
+    "hero": {
+      "title": "Cotiza tu Proyecto",
+      "subtitle": "Obtén un estimado instantáneo para tu proyecto de tablaroca. Selecciona los servicios, ingresa tu área y recibe un rango de precio de inmediato."
+    },
+    "calculator": {
+      "title": "Calculadora de Presupuesto",
+      "serviceType": "Tipo de Servicio",
+      "serviceDesc": "Selecciona uno o más servicios para tu cotización.",
+      "areaLabel": "Área Estimada",
+      "estPrice": "Precio Estimado",
+      "travelMobilization": "Viaje / Movilización",
+      "estTotal": "Total Estimado",
+      "disclaimer": "*Los precios son estimados y dependen de las condiciones del sitio y acabados."
+    },
+    "form": {
+      "title": "Detalles del Proyecto",
+      "fullName": "Nombre Completo",
+      "phone": "Teléfono / Celular",
+      "zone": "Zona / Área",
+      "zonePlaceholder": "ej. Centro, Suburbios...",
+      "whatsapp": "WhatsApp",
+      "whatsappPlaceholder": "Número de WhatsApp",
+      "desc": "Breve Descripción",
+      "descPlaceholder": "Cuéntanos más sobre lo que necesitas...",
+      "submitBtn": "Enviar por WhatsApp",
+      "submitDesc": "Recibirás una respuesta en menos de 30 minutos (horario laboral)."
+    },
+    "sidebar": {
+      "directLine": "Línea Directa",
+      "jobLoc": "Ubicación del Trabajo",
+      "mapHint": "Haz clic en el mapa para marcar la ubicación del trabajo.",
+      "trustTitle": "15 Años de Experiencia",
+      "trustDesc": "Especialistas certificados en sistemas de construcción ligera."
+    },
+    "whatsappMessage": "¡Hola! Me gustaría una cotización para:\n• Servicios: {services}\n• Área: {area}\n• Estimado: {estimate}\n• Nombre: {name}\n• Teléfono: {phone}\n• Zona: {zone}\n• Ubicación: {location}\n• Detalles: {details}"
+  },
+"footer": {
+  "description": "Comprometidos con la excelencia en la construcción ligera y acabados de primera calidad en todo México.",
+  "links": {
+    "title": "Enlaces",
+    "home": "Inicio",
+    "services": "Servicios",
+    "projects": "Proyectos",
+    "about": "Nosotros",
+    "faq": "Preguntas",
+    "quote": "Cotizar"
+  },
+  "services": {
+    "title": "Servicios",
+    "metalFraming": "Metal Framing Structures",
+    "installation": "Drywall Installation",
+    "finishing": "Drywall Finishing",
+    "painting": "Proximamente: Acabados Finales con pintura"
+  },
+  "contact": {
+    "title": "Contacto"
+  },
+  "copyright": "© 2026 TDrywall Contractor. Todos los derechos reservados."
+}
 }

@@ -186,21 +186,22 @@ export default function Servicios() {
             {t('servicios.cta.desc')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 relative z-10">
+            {/* Botón de Email (Conserva tu estilo blanco con el ícono) */}
             <a
-              href="https://wa.me/521234567890?text=Hola!%20Me%20gustaría%20cotizar%20un%20servicio%20de%20drywall"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="mailto:tdrywallcorporation@gmail.com?subject=Solicitud%20de%20información&body=Hola,%20me%20gustaría%20obtener%20más%20información%20sobre%20sus%20servicios%20de%20drywall.%20Mi%20nombre%20es:%20"
               className="bg-white text-td-dark px-10 py-4 rounded-xl font-headline font-bold hover:bg-slate-50 transition-all flex items-center justify-center gap-2"
             >
               {t('servicios.cta.contact')}
               <span className="material-symbols-outlined text-lg">arrow_forward</span>
             </a>
-            <Link
-              to="/cotizacion"
-              className="bg-[#10B981]/20 border border-white/20 text-white backdrop-blur-md px-10 py-4 rounded-xl font-headline font-bold hover:bg-white/10 transition-all text-center"
+
+            {/* Botón de Llamada (Reemplaza el <Link> por <a> conservando el estilo translúcido) */}
+            <a
+              href="tel:+14084491687"
+              className="bg-[#10B981]/20 border border-white/20 text-white backdrop-blur-md px-10 py-4 rounded-xl font-headline font-bold hover:bg-white/10 transition-all text-center flex items-center justify-center"
             >
               {t('servicios.cta.quote')}
-            </Link>
+            </a>
           </div>
         </div>
       </section>
