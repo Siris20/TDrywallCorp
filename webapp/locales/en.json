@@ -89,7 +89,9 @@
       "subtitle": "Portfolio",
       "title": "Our Results",
       "prevAria": "Previous Project",
-      "nextAria": "Next Project"
+      "nextAria": "Next Project",
+      "before": "BEFORE",
+      "after": "AFTER"
     },
     "projectsData": [
       {
@@ -199,7 +201,28 @@
       "estPrice": "Estimated Price",
       "travelMobilization": "Travel / Mobilization",
       "estTotal": "Estimated Total",
-      "disclaimer": "*Prices are estimates and depend on site conditions and final finishes."
+      "minimumFee": "*Small Job Minimum Fee applied ($250 USD)",
+      "disclaimer": "*Prices are estimates and depend on site conditions and final finishes. Travel / gas costs are not included and will be quoted separately based on job location.",
+      "services": {
+        "framing": {
+          "label": "Framing (Metal / Wood)",
+          "desc": "Metal or wood stud framing for walls and ceilings."
+        },
+        "drywall_hanging": {
+          "label": "Drywall Hanging",
+          "desc": "Hanging and securing drywall sheets to framing."
+        },
+        "finishing": {
+          "label": "Finishing & Texturing",
+          "desc": "Taping, mudding, and finishing to desired level.",
+          "selectLevel": "Select finish level:",
+          "levels": {
+            "level_3": "Level 3 (Texture) – Taping, mudding & texture ($2.50–$3.50/ft²)",
+            "level_4": "Level 4 (Smooth) – Ready for primer / flat paint ($3.50–$4.50/ft²)",
+            "level_5": "Level 5 (Skim-Coat) – Premium full skim-coat ($3.50–$5.50/ft²)"
+          }
+        }
+      }
     },
     "form": {
       "title": "Project Details",

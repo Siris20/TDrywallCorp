@@ -19,13 +19,13 @@ export default function Servicios() {
       <section className="max-w-7xl mx-auto px-8 space-y-24">
         {/* 1. Metal Framing */}
         <div className="grid md:grid-cols-12 gap-12 items-center">
-          <div className="md:col-span-7 relative group">
+          <div className="md:col-span-7 order-2 md:order-1 relative group">
             <div className="absolute -inset-4 bg-srv-primary-container/10 rounded-2xl blur-3xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
             <div className="relative overflow-hidden rounded-2xl aspect-[16/10] shadow-2xl">
               <img alt="Professional metal framing installation" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Close-up of industrial metal framing for drywall with precise steel studs and vertical alignment in a modern commercial building site" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMxSaMMKI0HqIVlE2uhpkUQV5Ss9dt_LPQmZSmMElHKV-Dexp02reBR7wO56LNry3tkYOpy6CuDGf_f6_MQ3PL-rzl2w87pXbe9noY4OHauNQE_Moa1LQoWUfJHB8wUor-PlMwIDaUUt__QrzyzefyXo49s3ehZpTEKoJtIE7eSl0w4qP_4CJzmkcSDUp5jplqQRtPCumC8iqitctwNIK1Mhbj1bJcaqGFMYtoyryEA9Xf7es8gpzY6eWBKQFFD-dq5Cx2YWOFy1Q" />
             </div>
           </div>
-          <div className="md:col-span-5 space-y-6">
+          <div className="md:col-span-5 order-1 md:order-2 space-y-6">
             <div className="inline-block bg-[#D8E2FF] px-4 py-1.5 text-srv-on-secondary-fixed rounded-full text-xs font-bold tracking-widest uppercase">
               {t('servicios.fase1.badge')}
             </div>
@@ -65,7 +65,7 @@ export default function Servicios() {
 
         {/* 2. Drywall Installation */}
         <div className="grid md:grid-cols-12 gap-12 items-center">
-          <div className="md:col-span-5 order-2 md:order-1 space-y-6">
+          <div className="md:col-span-5 order-1 md:order-1 space-y-6">
             <div className="inline-block px-4 py-1.5 bg-[#6FFBBE] text-srv-on-td-green-fixed rounded-full text-xs font-bold tracking-widest uppercase">
               {t('servicios.fase2.badge')}
             </div>
@@ -115,7 +115,7 @@ export default function Servicios() {
               </div>
             </div>
           </div>
-          <div className="md:col-span-7 order-1 md:order-2 relative group">
+          <div className="md:col-span-7 order-2 md:order-2 relative group">
             <div className="absolute -inset-4 bg-srv-secondary-container/5 rounded-2xl blur-3xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
             <div className="relative overflow-hidden rounded-2xl aspect-[16/10] shadow-2xl">
               <img alt="Drywall sheet installation" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Experienced contractor lifting a large drywall panel for installation on a clean metal-framed wall in a bright modern interior space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCX7TFXJjq55EnJ4VrnkJzJic4LUqdkypRrGyNg87KyHdhpCeiv8ddH-I7e-T4kg1OLCZEnN52MDd5smSr4nwLj-yKMTpWr5HdW0V0peIyegEJ9Y-dGQ4KEU8uUYu9GbJpRw0_sI3vydSgOvOyIcG9RYVLO2shuFGrYkC3ZbJj6ssWSaRNXqodH6kQKxHRIA9An6j1lUjZLIX4qwZztxjy4gQmtnRebiUtkLdVgwJDBHVw83BU644n1UICeXANZ6xcLaheuVC6WE0Y" />
@@ -128,7 +128,7 @@ export default function Servicios() {
 
         {/* 3. Drywall Finishing */}
         <div className="grid md:grid-cols-12 gap-12 items-center">
-          <div className="md:col-span-7 relative group">
+          <div className="md:col-span-7 order-2 md:order-1 relative group">
             <div className="absolute -inset-4 bg-srv-primary-container/20 rounded-2xl blur-3xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
             <div className="relative overflow-hidden rounded-2xl aspect-[16/10] shadow-2xl">
               <img alt="Drywall finishing and sanding" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Professional drywall finisher applying smooth compound to a corner joint with a large spatula, soft warm directional lighting highlighting the texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAevCv3Wh3FcLgmhcA1uIdwvMZbce6fuw5pMarYA9omSqRijlwvkkVe1a_iha_WyD1jNwrquzvMkpF9uN3aYNAee01lkxVDzYqf-kEspLGG9i6QTEObdlGlzZAVBmg3CnC46YfAJHF8_50tVHF_JJKKmN8qaQxvGRp10XFF3_yQSfrt6L5jHtB9z0W1MfUsn6PD10gZIwUVZxzXDNYjdeBrEaJKXYjyNlFaSrF7UEIb_GSw7hTFGiZvuJoJPCHHXsA0d2rlox2BbYk" />
@@ -139,7 +139,7 @@ export default function Servicios() {
               </div>
             </div>
           </div>
-          <div className="md:col-span-5 space-y-6">
+          <div className="md:col-span-5 order-1 md:order-2 space-y-6">
             <div className="inline-block px-4 py-1.5 bg-srv-on-tertiary-container text-white rounded-full text-xs font-bold tracking-widest uppercase">
               {t('servicios.fase3.badge')}
             </div>

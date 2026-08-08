@@ -89,7 +89,9 @@
       "subtitle": "Portafolio",
       "title": "Nuestros Resultados",
       "prevAria": "Proyecto Anterior",
-      "nextAria": "Proyecto Siguiente"
+      "nextAria": "Proyecto Siguiente",
+      "before": "ANTES",
+      "after": "DESPUÉS"
     },
     "projectsData": [
       {
@@ -199,7 +201,28 @@
       "estPrice": "Precio Estimado",
       "travelMobilization": "Viaje / Movilización",
       "estTotal": "Total Estimado",
-      "disclaimer": "*Los precios son estimados y dependen de las condiciones del sitio y acabados."
+      "minimumFee": "*Tarifa mínima por trabajo pequeño aplicada ($250 USD)",
+      "disclaimer": "*Los precios son estimados y dependen de las condiciones del sitio y acabados. El costo de gasolina / traslado NO está incluido y se cotizará por separado según la ubicación del trabajo.",
+      "services": {
+        "framing": {
+          "label": "Framing (Metal / Madera)",
+          "desc": "Estructura de perfiles metálicos o de madera para muros y techos."
+        },
+        "drywall_hanging": {
+          "label": "Instalación de Tablaroca",
+          "desc": "Instalación y fijación de láminas de tablaroca."
+        },
+        "finishing": {
+          "label": "Acabado & Texturizado",
+          "desc": "Encintado, empaste y acabado según el nivel deseado.",
+          "selectLevel": "Selecciona el nivel de acabado:",
+          "levels": {
+            "level_3": "Nivel 3 (Textura) – Cinta, empaste y textura ($2.50–$3.50/ft²)",
+            "level_4": "Nivel 4 (Liso) – Listo para primer / pintura mate ($3.50–$4.50/ft²)",
+            "level_5": "Nivel 5 (Skim-Coat) – Skim-coat premium completo ($3.50–$5.50/ft²)"
+          }
+        }
+      }
     },
     "form": {
       "title": "Detalles del Proyecto",

@@ -10,7 +10,7 @@ import React, { useState, useRef, useEffect } from 'react';
  * @param {string} props.beforeImage - Path to the "Before" image (shown on the left).
  * @param {string} props.afterImage - Path to the "After" image (shown on the right).
  */
-export default function BeforeAfterSlider({ beforeImage, afterImage }) {
+export default function BeforeAfterSlider({ beforeImage, afterImage, beforeLabel, afterLabel }) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const containerRef = useRef(null);
 
@@ -43,19 +43,19 @@ export default function BeforeAfterSlider({ beforeImage, afterImage }) {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onTouchMove={handleTouchMove}
-      className="relative w-full h-[400px] md:h-full min-h-[350px] overflow-hidden rounded-3xl border border-slate-200 dark:border-white/10 select-none shadow-xl cursor-ew-resize group bg-slate-100/80 dark:bg-td-dark/30"
+      className="relative w-full h-full min-h-[260px] overflow-hidden rounded-3xl border border-slate-200 dark:border-white/10 select-none shadow-xl cursor-ew-resize group bg-slate-100/80 dark:bg-td-dark/30"
     >
       {/* Base Layer: DESPUÉS (After) - full width at the bottom */}
       <img 
         src={afterImage} 
-        alt="Después" 
+        alt={afterLabel || "DESPUÉS"} 
         className="absolute inset-0 w-full h-full object-contain pointer-events-none" 
       />
 
       {/* Overlay Layer: ANTES (Before) - clipped dynamically based on slider position */}
       <img 
         src={beforeImage} 
-        alt="Antes" 
+        alt={beforeLabel || "ANTES"} 
         className="absolute inset-0 w-full h-full object-contain pointer-events-none" 
         style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
       />
@@ -73,10 +73,10 @@ export default function BeforeAfterSlider({ beforeImage, afterImage }) {
 
       {/* Label Badges */}
       <div className="absolute bottom-4 left-4 bg-td-dark/85 text-white px-4 py-1.5 rounded-xl text-xs font-black tracking-widest backdrop-blur-md z-10 border border-white/10 shadow-lg">
-        ANTES
+        {beforeLabel || "ANTES"}
       </div>
       <div className="absolute bottom-4 right-4 bg-td-green text-td-dark px-4 py-1.5 rounded-xl text-xs font-black tracking-widest z-10 shadow-lg">
-        DESPUÉS
+        {afterLabel || "DESPUÉS"}
       </div>
     </div>
   );

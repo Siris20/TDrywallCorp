@@ -127,10 +127,12 @@ export default function Inicio() {
           </div>
 
           <div className="w-full max-w-4xl mx-auto flex flex-col gap-6">
-            <div className="h-[275px] sm:h-[325px] md:h-[365px]">
+            <div className="w-full aspect-[4/3] sm:aspect-[16/10] md:h-[380px]">
               <BeforeAfterSlider
                 beforeImage={currentProject.before}
                 afterImage={currentProject.after}
+                beforeLabel={t('inicio.portfolio.before')}
+                afterLabel={t('inicio.portfolio.after')}
               />
             </div>
             <div className="px-4 text-center">

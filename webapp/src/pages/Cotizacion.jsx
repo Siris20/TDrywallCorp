@@ -5,7 +5,6 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import {
   SERVICES,
-  TRAVEL_COST,
   CURRENCY_SYMBOL,
   CURRENCY_CODE,
   AREA_UNIT,
@@ -36,6 +35,7 @@ export default function Cotizacion() {
   const { t } = useTranslation();
 
   const [selectedServices, setSelectedServices] = useState([]);
+  const [finishingLevel, setFinishingLevel] = useState("level_3");
   const [area, setArea] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -45,11 +45,11 @@ export default function Cotizacion() {
   const [location, setLocation] = useState(DEFAULT_CENTER);
 
   const estimate = useMemo(
-    () => calculateEstimate(selectedServices, parseFloat(area) || 0),
-    [selectedServices, area]
+    () => calculateEstimate(selectedServices, finishingLevel, parseFloat(area) || 0),
+    [selectedServices, finishingLevel, area]
   );
 
-  const hasEstimate = estimate.base > 0;
+  const hasEstimate = estimate.low > 0;
 
   function toggleService(id) {
     setSelectedServices((prev) =>
@@ -65,34 +65,37 @@ export default function Cotizacion() {
   }
 
   function handleSubmit(e) {
-  e.preventDefault();
+    e.preventDefault();
 
-  // 1. Filtramos y limpiamos datos
-  const serviceNames = SERVICES
-    .filter((s) => selectedServices.includes(s.id))
-    .map((s) => s.label)
-    .join(", ");
+    // Servicios seleccionados con sus etiquetas traducidas
+    const serviceNames = SERVICES
+      .filter((s) => selectedServices.includes(s.id))
+      .map((s) => {
+        if (s.id === "finishing") {
+          const levelLabel = t(`cotizacion.calculator.services.finishing.levels.${finishingLevel}`);
+          return `${t('cotizacion.calculator.services.finishing.label')} (${levelLabel})`;
+        }
+        return t(`cotizacion.calculator.services.${s.id}.label`, { defaultValue: s.label });
+      })
+      .join(", ");
 
-  const estimateStr = `${CURRENCY_SYMBOL}${formatUSD(estimate.low)} – ${CURRENCY_SYMBOL}${formatUSD(estimate.high)} ${CURRENCY_CODE}`;
+    const estimateStr = `${CURRENCY_SYMBOL}${formatUSD(estimate.low)} – ${CURRENCY_SYMBOL}${formatUSD(estimate.high)} ${CURRENCY_CODE}`;
 
-  // 2. Construimos el array de partes solo con lo que existe
-  const lines = [
-    t('cotizacion.whatsappMessage.greeting'), 
-    serviceNames ? `*Servicios:* ${serviceNames}` : null,
-    area ? `*Área:* ${area} ${AREA_UNIT}` : null,
-    hasEstimate ? `*Estimado:* ${estimateStr}` : null,
-    name ? `*Nombre:* ${name}` : null,
-    phone ? `*Teléfono:* ${phone}` : null,
-    zone ? `*Zona:* ${zone}` : null,
-    location ? `*Ubicación:* https://www.google.com/maps?q=${location[0]},${location[1]}` : null,
-    description ? `*Detalles adicionales:* ${description}` : null
-  ];
+    const lines = [
+      `¡Hola! Me gustaría una cotización para mi proyecto de drywall.`,
+      serviceNames ? `*Servicios:* ${serviceNames}` : null,
+      area ? `*Área:* ${area} ${AREA_UNIT}` : null,
+      hasEstimate ? `*Estimado:* ${estimateStr}` : null,
+      name ? `*Nombre:* ${name}` : null,
+      phone ? `*Teléfono:* ${phone}` : null,
+      zone ? `*Zona:* ${zone}` : null,
+      location ? `*Ubicación:* https://www.google.com/maps?q=${location[0]},${location[1]}` : null,
+      description ? `*Detalles adicionales:* ${description}` : null,
+    ];
 
-  // 3. Filtramos los nulos y unimos con saltos de línea
-  const message = lines.filter(Boolean).join("\n");
-
-  window.open(`https://wa.me/14084491687?text=${encodeURIComponent(message)}`, "_blank");
-}
+    const message = lines.filter(Boolean).join("\n");
+    window.open(`https://wa.me/14084491687?text=${encodeURIComponent(message)}`, "_blank");
+  }
 
   return (
     <div className="bg-td-white dark:bg-td-dark font-display text-slate-900 dark:text-slate-100 transition-colors duration-300">
@@ -123,19 +126,82 @@ export default function Cotizacion() {
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     {SERVICES.map((service) => {
                       const isActive = selectedServices.includes(service.id);
+                      const isFinishing = service.id === "finishing";
+                      const tKey = `cotizacion.calculator.services.${service.id}`;
+                      const cardLabel = t(`${tKey}.label`, { defaultValue: service.label });
+                      const cardDesc = t(`${tKey}.desc`, { defaultValue: service.description });
+
+                      // Price badge: finishing shows range of selected level
+                      const finishingService = SERVICES.find((s) => s.id === "finishing");
+                      const activeOption = isFinishing
+                        ? (finishingService?.options?.find((o) => o.id === finishingLevel) || finishingService?.options?.[0])
+                        : null;
+                      const priceMin = isFinishing ? activeOption?.priceMin : service.priceMin;
+                      const priceMax = isFinishing ? activeOption?.priceMax : service.priceMax;
+
                       return (
-                        <button
+                        <div
                           key={service.id}
-                          type="button"
-                          onClick={() => toggleService(service.id)}
-                          className={`group relative flex flex-col items-center justify-center gap-2 rounded-xl p-4 text-center transition-all duration-200 cursor-pointer ${isActive ? "border-2 border-td-green bg-td-green/10 shadow-md shadow-td-green/10 scale-[1.02]" : "border border-slate-200 dark:border-slate-700 hover:border-td-green/50 hover:bg-slate-50 dark:hover:bg-slate-800"}`}
+                          onClick={() => !isFinishing && toggleService(service.id)}
+                          className={`group relative flex flex-col gap-2 rounded-xl p-4 text-center transition-all duration-200 ${
+                            isFinishing ? "cursor-default" : "cursor-pointer"
+                          } ${
+                            isActive
+                              ? "border-2 border-td-green bg-td-green/10 shadow-md shadow-td-green/10 scale-[1.02]"
+                              : "border border-slate-200 dark:border-slate-700 hover:border-td-green/50 hover:bg-slate-50 dark:hover:bg-slate-800"
+                          }`}
                         >
-                          {isActive && (<span className="absolute top-2 right-2 flex h-5 w-5 items-center justify-center rounded-full bg-td-green text-white text-xs">✓</span>)}
-                          <span className={`material-symbols-outlined text-2xl transition-colors ${isActive ? "text-td-green" : "text-slate-400 group-hover:text-td-green/70"}`}>{service.icon}</span>
-                          <span className="text-sm font-bold">{service.label}</span>
-                          <span className="text-[10px] text-slate-500 leading-tight">{service.description}</span>
-                          <span className={`mt-1 inline-block rounded-full px-2 py-0.5 text-[10px] font-bold ${isActive ? "bg-td-green/20 text-td-green" : "bg-slate-100 dark:bg-slate-800 text-slate-500"}`}>{CURRENCY_SYMBOL}{service.pricePerFt2.toFixed(2)}/{AREA_UNIT}</span>
-                        </button>
+                          {isActive && (
+                            <span className="absolute top-2 right-2 flex h-5 w-5 items-center justify-center rounded-full bg-td-green text-white text-xs">✓</span>
+                          )}
+                          {/* Header row: icon + toggle for non-finishing, clickable label for finishing */}
+                          <button
+                            type="button"
+                            onClick={(e) => { e.stopPropagation(); toggleService(service.id); }}
+                            className="flex flex-col items-center gap-1 w-full focus:outline-none"
+                          >
+                            <span className={`material-symbols-outlined text-2xl transition-colors ${
+                              isActive ? "text-td-green" : "text-slate-400 group-hover:text-td-green/70"
+                            }`}>{service.icon}</span>
+                            <span className="text-sm font-bold">{cardLabel}</span>
+                            <span className="text-[10px] text-slate-500 leading-tight">{cardDesc}</span>
+                            <span className={`mt-1 inline-block rounded-full px-2 py-0.5 text-[10px] font-bold ${
+                              isActive ? "bg-td-green/20 text-td-green" : "bg-slate-100 dark:bg-slate-800 text-slate-500"
+                            }`}>
+                              {priceMin != null ? `${CURRENCY_SYMBOL}${priceMin.toFixed(2)} – ${CURRENCY_SYMBOL}${priceMax.toFixed(2)}/${AREA_UNIT}` : null}
+                            </span>
+                          </button>
+
+                          {/* Finishing level selector */}
+                          {isFinishing && (
+                            <div className="mt-2 w-full" onClick={(e) => e.stopPropagation()}>
+                              <label className="block text-[10px] font-semibold text-slate-500 mb-1">
+                                {t('cotizacion.calculator.services.finishing.selectLevel')}
+                              </label>
+                              <select
+                                value={finishingLevel}
+                                onChange={(e) => {
+                                  setFinishingLevel(e.target.value);
+                                  // Auto-activate the finishing card when user picks a level
+                                  setSelectedServices((prev) =>
+                                    prev.includes("finishing") ? prev : [...prev, "finishing"]
+                                  );
+                                }}
+                                className={`w-full rounded-lg border px-2 py-1.5 text-[11px] font-medium focus:outline-none transition-colors cursor-pointer ${
+                                  isActive
+                                    ? "border-td-green/50 bg-td-green/5 text-slate-800 dark:text-slate-100"
+                                    : "border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200"
+                                }`}
+                              >
+                                {service.options.map((opt) => (
+                                  <option key={opt.id} value={opt.id}>
+                                    {t(`cotizacion.calculator.services.finishing.levels.${opt.id}`, { defaultValue: opt.label })}
+                                  </option>
+                                ))}
+                              </select>
+                            </div>
+                          )}
+                        </div>
                       );
                     })}
                   </div>
@@ -164,18 +230,23 @@ export default function Cotizacion() {
                   <div className="rounded-lg border border-slate-200 dark:border-slate-700 divide-y divide-slate-100 dark:divide-slate-800 text-sm">
                     {estimate.breakdown.map((item) => (
                       <div key={item.id} className="flex items-center justify-between px-4 py-3">
-                        <span className="text-slate-600 dark:text-slate-400">{item.label} <span className="text-xs text-slate-400">({CURRENCY_SYMBOL}{item.pricePerFt2.toFixed(2)} × {area} {AREA_UNIT})</span></span>
-                        <span className="font-bold">{CURRENCY_SYMBOL}{formatUSD(Math.round(item.subtotal))}</span>
+                        <span className="text-slate-600 dark:text-slate-400">{item.label} <span className="text-xs text-slate-400">({CURRENCY_SYMBOL}{item.priceMin.toFixed(2)} – {CURRENCY_SYMBOL}{item.priceMax.toFixed(2)} × {area} {AREA_UNIT})</span></span>
+                        <span className="font-bold">{CURRENCY_SYMBOL}{formatUSD(Math.round(item.subtotalLow))} – {CURRENCY_SYMBOL}{formatUSD(Math.round(item.subtotalHigh))}</span>
                       </div>
                     ))}
-                    <div className="flex items-center justify-between px-4 py-3 bg-slate-50 dark:bg-slate-800/50">
-                      <span className="text-slate-600 dark:text-slate-400">{t('cotizacion.calculator.travelMobilization')}</span>
-                      <span className="font-bold">{CURRENCY_SYMBOL}{formatUSD(TRAVEL_COST)}</span>
-                    </div>
+
                     <div className="flex items-center justify-between px-4 py-3 bg-td-green/5 font-bold">
                       <span>{t('cotizacion.calculator.estTotal')}</span>
                       <span className="text-td-green text-lg">{CURRENCY_SYMBOL}{formatUSD(estimate.low)} – {CURRENCY_SYMBOL}{formatUSD(estimate.high)}</span>
                     </div>
+                    {estimate.isMinimumApplied && (
+                      <div className="flex items-center gap-2 px-4 py-2 bg-amber-50 dark:bg-amber-900/20 border-t border-amber-200 dark:border-amber-700/40 rounded-b-lg">
+                        <span className="material-symbols-outlined text-amber-500 text-base">info</span>
+                        <p className="text-[11px] text-amber-700 dark:text-amber-400 italic">
+                          {t('cotizacion.calculator.minimumFee')}
+                        </p>
+                      </div>
+                    )}
                   </div>
                 </div>
                 <p className="text-[11px] text-slate-500 italic">{t('cotizacion.calculator.disclaimer')}</p>

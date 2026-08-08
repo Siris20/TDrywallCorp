@@ -219,15 +219,15 @@ export default function Proyectos() {
             </header>
 
             {/* ── Filter Buttons ────────────────────────────────── */}
-            <div className="flex overflow-x-auto pb-4 scrollbar-hide">
-              <div className="flex gap-3 bg-white/60 backdrop-blur-md p-2 rounded-full border border-slate-200/50 shadow-sm">
+            <div className="w-full overflow-x-auto pb-4 scrollbar-none touch-pan-x">
+              <div className="inline-flex gap-2 sm:gap-3 bg-white/70 backdrop-blur-md p-1.5 sm:p-2 rounded-2xl sm:rounded-full border border-slate-200/60 shadow-sm min-w-max">
                 {FILTERS.map((f) => {
                   const isActive = activeFilter === f.key;
                   return (
                     <button
                       key={f.key}
                       onClick={() => setActiveFilter(f.key)}
-                      className="px-6 py-2.5 rounded-full font-headline font-bold text-sm transition-all duration-300 whitespace-nowrap"
+                      className="px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl sm:rounded-full font-headline font-bold text-xs sm:text-sm transition-all duration-300 whitespace-nowrap shrink-0 flex items-center gap-1.5"
                       style={
                         isActive
                           ? {
@@ -248,9 +248,9 @@ export default function Proyectos() {
                         }
                       }}
                     >
-                      {t(f.labelKey)} {/* <-- Traducción de los botones */}
+                      {t(f.labelKey)}
                       {isActive && (
-                        <span className="ml-2 bg-white/25 text-white text-xs px-2 py-0.5 rounded-full">
+                        <span className="bg-white/25 text-white text-[10px] sm:text-xs px-2 py-0.5 rounded-full font-extrabold">
                           {filtered.length}
                         </span>
                       )}

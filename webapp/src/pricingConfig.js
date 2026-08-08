@@ -1,105 +1,137 @@
 // ============================================================
-//  PRICING CONFIGURATION — Edit prices here
-// ============================================================
-//  All prices are in USD ($) per square foot (ft²).
-//  Modify the values below to reflect your real costs.
+//  PRICING CONFIGURATION — Bay Area Drywall Services
 // ============================================================
 
-/**
- * SERVICE PRICES (USD per ft²)
- * 
- * Each service has:
- *   - label       : Display name shown in the UI
- *   - icon        : Material Symbols icon name
- *   - pricePerFt2 : Your price per square foot in USD
- *   - description : Short description for the user
- */
 export const SERVICES = [
   {
     id: "framing",
-    label: "Framing",
+    label: "Framing (Metal / Wood)",
     icon: "view_quilt",
-    pricePerFt2: 3.50,          // <-- CHANGE THIS to your real price
+    priceMin: 2.50,
+    priceMax: 3.50,
+    unit: "ft²",
     description: "Metal or wood stud framing for walls and ceilings.",
   },
   {
-    id: "drywall_installation",
-    label: "Drywall Installation",
+    id: "drywall_hanging",
+    label: "Drywall Hanging",
     icon: "layers",
-    pricePerFt2: 2.75,          // <-- CHANGE THIS to your real price
+    priceMin: 1.50,
+    priceMax: 2.50,
+    unit: "ft²",
     description: "Hanging and securing drywall sheets to framing.",
   },
   {
     id: "finishing",
-    label: "Finishing",
+    label: "Finishing & Texturing",
     icon: "build",
-    pricePerFt2: 2.25,          // <-- CHANGE THIS to your real price
-    description: "Taping, mudding, sanding, and texturing to a paint-ready surface.",
+    unit: "ft²",
+    description: "Taping, mudding, and finishing to desired level (Includes hanging).",
+    options: [
+      {
+        id: "level_3",
+        label: "Level 3 (Texture)",
+        priceMin: 2.50,
+        priceMax: 3.50,
+        sheetEstimate: "$85 – $120 / sheet (4' x 8')",
+        description: "Taping, mudding & texture applied.",
+      },
+      {
+        id: "level_4",
+        label: "Level 4 (Smooth)",
+        priceMin: 3.50,
+        priceMax: 4.50,
+        sheetEstimate: "$165 – $215 / sheet (4' x 12')",
+        description: "Smooth finish ready for primer / flat paint.",
+      },
+      {
+        id: "level_5",
+        label: "Level 5 (Skim-Coat)",
+        priceMin: 3.50,
+        priceMax: 5.50,
+        sheetEstimate: "Premium full skim-coat",
+        description: "Ultra smooth finish for high-gloss paint or critical light.",
+      },
+    ],
   },
 ];
 
-/**
- * TRAVEL / MOBILIZATION COST (flat fee in USD)
- * This is added once to every quote, regardless of area or service.
- */
-export const TRAVEL_COST = 75.00;   // <-- CHANGE THIS to your real travel cost
-
-/**
- * ESTIMATE RANGE FACTOR
- * The calculator shows a price range: [low, high].
- * - lowFactor  multiplies the base price to get the low end
- * - highFactor multiplies the base price to get the high end
- * 
- * Example: base $500, lowFactor 0.9, highFactor 1.15
- *   → shown as "$450 – $575"
- */
-export const ESTIMATE_LOW_FACTOR  = 0.90;   // <-- 10% below base
-export const ESTIMATE_HIGH_FACTOR = 1.15;   // <-- 15% above base
-
-/**
- * CURRENCY SYMBOL displayed in the UI
- */
+export const MINIMUM_PROJECT_FEE = 250.00; // Tarifa mínima cobrada por trabajo
 export const CURRENCY_SYMBOL = "$";
-export const CURRENCY_CODE   = "USD";
-
-/**
- * AREA UNIT displayed in the UI
- */
+export const CURRENCY_CODE = "USD";
 export const AREA_UNIT = "ft²";
 
-// ============================================================
-//  CALCULATION LOGIC — You normally don't need to change this
-// ============================================================
-
 /**
- * Calculates the estimated price range for selected services + area.
- *
- * @param {string[]} selectedServiceIds - Array of selected service IDs
- * @param {number}   area               - Area in ft²
- * @returns {{ low: number, high: number, base: number, travel: number, breakdown: Array }}
+ * Calcula la estimación precisa sin duplicar costos y aplicando el mínimo de proyecto.
  */
-export function calculateEstimate(selectedServiceIds, area) {
-  if (!selectedServiceIds.length || !area || area <= 0) {
-    return { low: 0, high: 0, base: 0, travel: 0, breakdown: [] };
+export function calculateEstimate(selectedServiceIds, selectedFinishingOptionId = "level_3", area = 0) {
+  if (!selectedServiceIds || !selectedServiceIds.length || !area || area <= 0) {
+    return { low: 0, high: 0, travel: 0, breakdown: [], isMinimumApplied: false };
   }
 
-  const breakdown = SERVICES
-    .filter((s) => selectedServiceIds.includes(s.id))
-    .map((s) => ({
-      id: s.id,
-      label: s.label,
-      pricePerFt2: s.pricePerFt2,
-      subtotal: s.pricePerFt2 * area,
-    }));
+  const breakdown = [];
+  const includesHanging = selectedServiceIds.includes("drywall_hanging");
+  const includesFinishing = selectedServiceIds.includes("finishing");
+  const includesFraming = selectedServiceIds.includes("framing");
 
-  const servicesTotal = breakdown.reduce((sum, item) => sum + item.subtotal, 0);
-  const base = servicesTotal + TRAVEL_COST;
+  // 1. Framing (Siempre se suma de forma independiente si está seleccionado)
+  if (includesFraming) {
+    const framingService = SERVICES.find((s) => s.id === "framing");
+    breakdown.push({
+      id: "framing",
+      label: framingService.label,
+      priceMin: framingService.priceMin,
+      priceMax: framingService.priceMax,
+      subtotalLow: framingService.priceMin * area,
+      subtotalHigh: framingService.priceMax * area,
+    });
+  }
+
+  // 2. Finishing vs Hanging (Evita cobrar doble)
+  if (includesFinishing) {
+    const finishingService = SERVICES.find((s) => s.id === "finishing");
+    const option = finishingService.options.find((o) => o.id === selectedFinishingOptionId) || finishingService.options[0];
+
+    // Si también seleccionó Hanging, aclaramos que la tarifa de Finishing ya incluye la instalación/colgado.
+    const note = includesHanging ? " (Includes Hanging & Finishing)" : "";
+
+    breakdown.push({
+      id: `finishing_${option.id}`,
+      label: `Finishing: ${option.label}${note}`,
+      priceMin: option.priceMin,
+      priceMax: option.priceMax,
+      subtotalLow: option.priceMin * area,
+      subtotalHigh: option.priceMax * area,
+    });
+  } else if (includesHanging) {
+    // Solo si seleccionó Hanging SIN Finishing
+    const hangingService = SERVICES.find((s) => s.id === "drywall_hanging");
+    breakdown.push({
+      id: "drywall_hanging",
+      label: hangingService.label,
+      priceMin: hangingService.priceMin,
+      priceMax: hangingService.priceMax,
+      subtotalLow: hangingService.priceMin * area,
+      subtotalHigh: hangingService.priceMax * area,
+    });
+  }
+
+  // 3. Cálculos Totales
+  const servicesTotalLow = breakdown.reduce((sum, item) => sum + item.subtotalLow, 0);
+  const servicesTotalHigh = breakdown.reduce((sum, item) => sum + item.subtotalHigh, 0);
+
+  const rawLow = servicesTotalLow;
+  const rawHigh = servicesTotalHigh;
+
+  // Evaluar si se aplica la tarifa mínima de proyecto
+  const isMinimumApplied = rawHigh < MINIMUM_PROJECT_FEE;
+  const low = isMinimumApplied ? MINIMUM_PROJECT_FEE : Math.round(rawLow);
+  const high = isMinimumApplied ? MINIMUM_PROJECT_FEE + 50 : Math.round(rawHigh);
 
   return {
-    base,
-    travel: TRAVEL_COST,
-    low: Math.round(base * ESTIMATE_LOW_FACTOR),
-    high: Math.round(base * ESTIMATE_HIGH_FACTOR),
+    low,
+    high,
     breakdown,
+    isMinimumApplied,
   };
 }
