@@ -55,7 +55,7 @@ export default function Footer() {
 
               {/* Facebook (remplaza la URL con la de tu página) */}
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/profile.php?id=61556350712629&mibextid=wwXIfr"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"

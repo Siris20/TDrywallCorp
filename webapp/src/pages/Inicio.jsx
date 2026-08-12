@@ -38,7 +38,7 @@ export default function Inicio() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[120vh] w-full flex items-center justify-start overflow-hidden">
+      <section className="relative h-[120vh] w-full flex items-center justify-start overflow-hidden mt-8">
         <div className="absolute inset-0 z-0">
           <img alt="Modern construction site with drywall" className="w-full h-full object-cover" data-alt="Interior of a large modern building under construction" src="https://th.bing.com/th/id/OIP.wENzab92ibpoTBz5wDCZDgHaE8?w=243&h=180&c=7&r=0&o=7&dpr=1.2&pid=1.7&rm=3" />
           <div className="absolute inset-0 bg-gradient-to-r from-td-dark via-td-dark/80 to-transparent"></div>
@@ -90,7 +90,7 @@ export default function Inicio() {
 
                 {/* Facebook */}
                 <a
-                  href="https://facebook.com"
+                  href="https://www.facebook.com/profile.php?id=61556350712629&mibextid=wwXIfr"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook"
