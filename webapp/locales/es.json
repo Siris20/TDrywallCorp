@@ -77,7 +77,8 @@
       "title3": "de Drywall Profesional",
       "desc": "Transformamos tus espacios con acabados de alta gama, rapidez garantizada y la máxima calidad técnica en el mercado.",
       "btnProjects": "VER PROYECTOS",
-      "btnProcess": "NUESTRO PROCESO"
+      "btnProcess": "NUESTRO PROCESO",
+      "socialLabel": "Síguenos en nuestras redes:"
     },
     "stats": {
       "projects": { "value": "+25", "label": "Proyectos realizados" },

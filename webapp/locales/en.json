@@ -77,7 +77,8 @@
       "title3": "Installation",
       "desc": "We transform your spaces with high-end finishes, guaranteed speed, and the highest technical quality in the market.",
       "btnProjects": "VIEW PROJECTS",
-      "btnProcess": "OUR PROCESS"
+      "btnProcess": "OUR PROCESS",
+    "socialLabel": "Follow us on our socials:"
     },
     "stats": {
       "projects": { "value": "+25", "label": "Completed Projects" },
